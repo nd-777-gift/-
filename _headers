@@ -1,0 +1,23 @@
+# Cloudflare Workers 静态资源头部配置
+
+# 图片缓存 - 30天
+/pictures/*
+  Cache-Control: public, max-age=2592000, immutable
+  
+# JavaScript 文件缓存 - 7天
+/sss.ss/image-3D/*.js
+  Cache-Control: public, max-age=604800
+  
+# HTML 文件 - 不缓存（方便更新）
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+  
+/sss.ss/image-3D/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# CORS 设置（允许跨域加载资源）
+/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, OPTIONS
+  Access-Control-Allow-Headers: *
+
